@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model HomeViewModel
+
+
+<form asp-controller="Home" asp-action="Index" method="post">
+    <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Search by name</span>
+        </div>
+        @Html.TextBoxFor(model => model.Name, new { placeholder=Html.DisplayNameFor(model => model.Name), @class="form-control"})
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">OwnerName</th>
+            <th scope="col">Bathrooms</th>
+            <th scope="col">Bedrooms</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model.Apartments)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.OwnerName</td>
+                    <td>@item.Bathrooms</td>
+                    <td>@item.Bedrooms</td>
+                    <td>
+                        <a class="btn btn-primary" href="@Url.Action("Details", "ApartmentDetails", new { id = item.Id })" role="button">Open apartment details</a>
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>

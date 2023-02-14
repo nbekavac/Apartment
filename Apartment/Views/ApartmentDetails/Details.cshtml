@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model ApartmentDetailsViewModel
+
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="~/images/bekavac.jpg" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Apartment.Name</h5>
+        <h6 class="card-subtitle mb-2 text-muted">@Model.Apartment.OwnerName</h6>
+        <p class="card-text">
+            <span><strong>NO. Bathrooms:</strong> @Model.Apartment.Bathrooms </span> <br/>
+            <span><strong>NO. Bedrooms:</strong> @Model.Apartment.Bedrooms</span>
+        </p>
+    </div>
+</div>
